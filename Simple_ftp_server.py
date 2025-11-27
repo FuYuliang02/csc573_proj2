@@ -63,10 +63,10 @@ def main():
 
     port = int(sys.argv[1])
     out_filename = sys.argv[2]
-    loss_prob = float(sys.argv[3])  # 0 < p < 1
+    loss_prob = float(sys.argv[3])  # 0 <= p <= 1
 
-    if not (0.0 < loss_prob < 1.0):
-        print("Error: p must be in (0, 1)")
+    if not (0.0 <= loss_prob <= 1.0):
+        print("Error: p must be in [0, 1]")
         sys.exit(1)
 
     # Seed random generator (optional, but nice to have)
@@ -103,7 +103,7 @@ def main():
 
             # Probabilistic loss
             r = random.random()  # r in [0.0, 1.0)
-            if r <= loss_prob:
+            if r < loss_prob:
                 # Simulate loss: drop packet, print message, and do nothing else
                 print(f"Packet loss, sequence number = {seq_num}")
                 continue

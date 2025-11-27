@@ -10,7 +10,7 @@ DATA_TYPE = 0x5555  # 0101010101010101
 ACK_TYPE  = 0xAAAA  # 1010101010101010
 
 # Timeout in seconds
-TIMEOUT_INTERVAL = 0.5
+TIMEOUT_INTERVAL = 0.8
 
 
 def udp_checksum(data: bytes) -> int:
@@ -105,6 +105,7 @@ def gbn_send_file(
     next_seq_num = 0      # sequence number of next packet to send
 
     # Start sending / receiving
+    start_time = time.time()
     while base < num_segments:
         # Send packets within window
         while next_seq_num < base + N and next_seq_num < num_segments:
@@ -149,6 +150,10 @@ def gbn_send_file(
 
             # Restart timer (socket timeout already set)
             sock.settimeout(TIMEOUT_INTERVAL)
+    
+    end_time = time.time()
+    duration = end_time - start_time
+    print(f"File transfer completed in {duration:.4f} seconds.")
 
     sock.close()
 
