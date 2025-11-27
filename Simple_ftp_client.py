@@ -10,7 +10,7 @@ DATA_TYPE = 0x5555  # 0101010101010101
 ACK_TYPE  = 0xAAAA  # 1010101010101010
 
 # Timeout in seconds
-TIMEOUT_INTERVAL = 0.8
+TIMEOUT_INTERVAL = 0.5
 
 
 def udp_checksum(data: bytes) -> int:

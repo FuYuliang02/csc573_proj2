@@ -105,7 +105,7 @@ def main():
             r = random.random()  # r in [0.0, 1.0)
             if r < loss_prob:
                 # Simulate loss: drop packet, print message, and do nothing else
-                print(f"Packet loss, sequence number = {seq_num}")
+                print(f"Packet loss, sequence number = {seq_num}", flush=True)
                 continue
 
             # Now apply Go-back-N receiver logic
