@@ -76,9 +76,9 @@ def main():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind(("", port))  # listen on all interfaces
 
-    print(f"Simple-FTP server listening on port {port}")
-    print(f"Writing received data to file: {out_filename}")
-    print(f"Packet loss probability p = {loss_prob}")
+    print(f"Simple-FTP server listening on port {port}", flush=True)
+    print(f"Writing received data to file: {out_filename}", flush=True)
+    print(f"Packet loss probability p = {loss_prob}", flush=True)
 
     # Open output file for writing (wb: overwrite each run)
     with open(out_filename, "wb") as outfile:
